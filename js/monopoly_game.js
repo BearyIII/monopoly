@@ -53,63 +53,6 @@ var deedRents = [
     [50]
 ];
 
-var actionSpace = [new ActionSpace('go'), new ActionSpace('community chest', DrawCommunityChest), new ActionSpace('chance', DrawChanceCard),
-    new ActionSpace('income tax', PayIncomeTax), new ActionSpace('jail / just visiting'), new ActionSpace('free parking'),
-    new ActionSpace('go to jail', SpecialAction.goToJail), new ActionSpace('luxury tax', PayLuxuryTax)
-];
-
-var deeds = [];
-var chanceDiscardPile = [];
-var communityChestDiscardPile = [];
-
-var monopolyboard;
-var playerID = 0;
-
-function DrawCommunityChest() {
-    // todo
-    console.error("Not Implemented");
-}
-
-function DrawChanceCard() {
-    // todo
-    console.error("Not Implemented");
-}
-
-function PayIncomeTax() {
-    // todo
-    console.error("Not Implemented");
-}
-
-function PayLuxuryTax() {
-    // todo
-    console.error("Not Implemented");
-}
-
-var tokens = ['car', 'iron', 'ship', 'wheelbarrow', 'thimble', 'cannon', 'train', 'horse', 'hat', 'shoe', 'dog'];
-
-var activePlayer = null;
-
-function CreateMonopolyBoard() {
-    monopolyboard = [actionSpace[0], deeds[0], actionSpace[1], deeds[1], actionSpace[3], deeds[2],
-        deeds[3], actionSpace[2], deeds[4], deeds[5], actionSpace[4],
-        deeds[6], deeds[7], deeds[8], deeds[9], deeds[10],
-        deeds[11], actionSpace[1], deeds[12], deeds[13], actionSpace[5],
-        deeds[14], actionSpace[2], deeds[15], deeds[16], deeds[17],
-        deeds[18], deeds[19], deeds[20], deeds[21], actionSpace[6],
-        deeds[22], deeds[23], actionSpace[1], deeds[24], deeds[25],
-        actionSpace[2], deeds[26], actionSpace[7], deeds[27]
-    ];
-}
-
-function ActionSpace(name, callback) {
-    this.name = name;
-    this.action = callback;
-}
-
-function boolIsUnowned(deed) {
-    return deed.owner == null;
-}
-
 var SpecialAction = {
     passedGo: function (player) {
         player.cash += 200;
@@ -172,6 +115,65 @@ var SpecialAction = {
         console.error("Not Implemented");
     }
 };
+
+var actionSpace = [new ActionSpace('go'), new ActionSpace('community chest', DrawCommunityChest), new ActionSpace('chance', DrawChanceCard),
+    new ActionSpace('income tax', PayIncomeTax), new ActionSpace('jail / just visiting'), new ActionSpace('free parking'),
+    new ActionSpace('go to jail', SpecialAction.goToJail), new ActionSpace('luxury tax', PayLuxuryTax)
+];
+
+var deeds = [];
+var chanceDiscardPile = [];
+var communityChestDiscardPile = [];
+
+var monopolyboard;
+var playerID = 0;
+
+function DrawCommunityChest() {
+    // todo
+    console.error("Not Implemented");
+}
+
+function DrawChanceCard() {
+    // todo
+    console.error("Not Implemented");
+}
+
+function PayIncomeTax() {
+    // todo
+    console.error("Not Implemented");
+}
+
+function PayLuxuryTax() {
+    // todo
+    console.error("Not Implemented");
+}
+
+var tokens = ['car', 'iron', 'ship', 'wheelbarrow', 'thimble', 'cannon', 'train', 'horse', 'hat', 'shoe', 'dog'];
+
+var activePlayer = null;
+
+function CreateMonopolyBoard() {
+    monopolyboard = [actionSpace[0], deeds[0], actionSpace[1], deeds[1], actionSpace[3], deeds[2],
+        deeds[3], actionSpace[2], deeds[4], deeds[5], actionSpace[4],
+        deeds[6], deeds[7], deeds[8], deeds[9], deeds[10],
+        deeds[11], actionSpace[1], deeds[12], deeds[13], actionSpace[5],
+        deeds[14], actionSpace[2], deeds[15], deeds[16], deeds[17],
+        deeds[18], deeds[19], deeds[20], deeds[21], actionSpace[6],
+        deeds[22], deeds[23], actionSpace[1], deeds[24], deeds[25],
+        actionSpace[2], deeds[26], actionSpace[7], deeds[27]
+    ];
+}
+
+function ActionSpace(name, callback) {
+    this.name = name;
+    this.action = callback;
+}
+
+function boolIsUnowned(deed) {
+    return deed.owner == null;
+}
+
+
 
 var chanceDeck = [new Card('Advance to "Go", collect $200', 200, 0, 0, false, null),
     new Card('Advance to Illinois Ave. If you pass Go, collect $200.', 200, 0, 24, true, null),
